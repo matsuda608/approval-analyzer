@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { RadarChartComp } from "@/components/RadarChartComp";
 import { PersonalityType } from "@/data/types";
 import { Button } from "@/components/ui/button";
-import { Share2, Download, ChevronRight, BookOpen, HeartHandshake, Swords } from "lucide-react";
+import { Share2, Download, ChevronRight, BookOpen, HeartHandshake, Swords, Lock } from "lucide-react";
 import Link from "next/link";
 
 interface Props {
@@ -18,6 +18,28 @@ interface Props {
 
 export function ResultClientPage({ payload, type, bestMatch, worstMatch, d }: Props) {
   const [shareUrl, setShareUrl] = useState("https://example.com");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handlePremiumClick = async () => {
+    try {
+      setIsLoading(true);
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ d }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error(data.error || 'Checkout failed');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('決済画面への遷移に失敗しました。');
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -133,7 +155,7 @@ export function ResultClientPage({ payload, type, bestMatch, worstMatch, d }: Pr
               </div>
               <div className="ml-5 flex-grow">
                 <p className="text-[10px] text-[#d4af37] tracking-widest mb-1 flex items-center gap-1.5 font-bold">
-                  <HeartHandshake className="w-3.5 h-3.5" /> 共生関係 (Best Match)
+                  <HeartHandshake className="w-3.5 h-3.5" /> ズッ友関係 (Best Match)
                 </p>
                 <div className="flex items-baseline gap-2 mb-2">
                   <p className="text-lg font-serif text-white tracking-widest">{bestMatch.name.split(" ")[0]}</p>
@@ -160,6 +182,49 @@ export function ResultClientPage({ payload, type, bestMatch, worstMatch, d }: Pr
               </div>
             </div>
           </div>
+        </motion.section>
+
+        {/* PREMIUM TEASER (BLURRED) */}
+        <motion.section
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          className="relative pt-4 overflow-hidden"
+        >
+          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-zinc-950/80 backdrop-blur-[3px] border border-zinc-800 p-4">
+            <Lock className="w-8 h-8 text-zinc-500 mb-3" />
+            <p className="text-sm font-bold text-zinc-300 tracking-widest text-center">プレミアム版で全データ解禁</p>
+            <p className="text-[10px] text-zinc-500 mt-2 tracking-widest text-center">
+              ・社会での生き残り戦略（あなたの食い扶持）<br />
+              ・人生の詰みパターン（やらかし警報）<br />
+              ・人間関係サバイバルマップと地雷の避け方<br />
+              ・数千パターンの「あなた専用こじらせ処方箋」
+            </p>
+          </div>
+
+          <div className="space-y-4 opacity-30 select-none pointer-events-none">
+            <div className="flex items-center justify-center gap-3 mb-2">
+              <h3 className="text-xs font-bold text-zinc-400 tracking-[0.3em] uppercase">社会での生き残り戦略</h3>
+            </div>
+            <div className="h-20 bg-zinc-900 border border-zinc-800 w-full" />
+            <div className="h-24 bg-zinc-900 border border-zinc-800 w-full mt-4" />
+          </div>
+        </motion.section>
+
+        {/* PREMIUM REPORT */}
+        <motion.section
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.45, ease: "easeOut" }}
+          className="space-y-4 pt-4"
+        >
+          <Button 
+            onClick={handlePremiumClick}
+            disabled={isLoading}
+            className="w-full h-14 bg-gradient-to-r from-[#d4af37] to-[#b48f27] hover:from-[#e4bf47] hover:to-[#c49f37] text-black font-bold rounded-none flex items-center justify-center gap-3 tracking-widest text-sm shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all"
+          >
+            {isLoading ? "決済画面へ移行中..." : "さらに深く自分を解剖する（有料レポート）"}
+          </Button>
         </motion.section>
 
         {/* SNS EXPORT */}
