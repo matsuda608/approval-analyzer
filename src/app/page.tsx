@@ -41,9 +41,14 @@ export default function Home() {
               分析を開始する
             </Button>
           </Link>
-          <p className="mt-3 text-xs text-slate-400">
+          <p className="mt-3 text-xs text-slate-400 mb-8">
             所要時間：約3分 / 全40問
           </p>
+          <div className="pt-4 pb-8 text-center">
+            <Link href="/law" className="inline-block p-4 text-xs text-slate-400 hover:text-slate-600 transition-colors">
+              特定商取引法に基づく表記
+            </Link>
+          </div>
         </div>
       </div>
     </div>

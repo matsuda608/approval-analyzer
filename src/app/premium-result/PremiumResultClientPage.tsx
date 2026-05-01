@@ -238,6 +238,18 @@ export function PremiumResultClientPage({ payload, type, bestMatch, worstMatch, 
               通常観測データへ戻る
             </Button>
           </Link>
+          
+          <div className="pt-8 pb-4 text-center">
+            <Link href="/" className="inline-flex items-center justify-center gap-1 p-4 text-[10px] font-semibold text-zinc-500 hover:text-[#d4af37] tracking-widest transition-colors uppercase">
+              <ChevronLeft className="w-3 h-3" /> もう一度測定する
+            </Link>
+          </div>
+
+          <div className="pb-8 text-center">
+            <Link href="/law" className="inline-block p-4 text-[10px] text-zinc-600 hover:text-zinc-400 transition-colors">
+              特定商取引法に基づく表記
+            </Link>
+          </div>
         </motion.section>
 
       </div>

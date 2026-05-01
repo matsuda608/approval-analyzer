@@ -248,11 +248,17 @@ export function ResultClientPage({ payload, type, bestMatch, worstMatch, d }: Pr
             </Button>
           </Link>
           
-          <Link href="/" className="block pt-8 text-center">
-            <span className="text-[10px] font-semibold text-zinc-500 hover:text-[#d4af37] flex items-center justify-center gap-1 tracking-widest transition-colors uppercase">
+          <Link href="/" className="block pt-8 text-center pb-4">
+            <span className="inline-flex items-center justify-center gap-1 p-4 text-[10px] font-semibold text-zinc-500 hover:text-[#d4af37] tracking-widest transition-colors uppercase">
               もう一度測定する <ChevronRight className="w-3 h-3" />
             </span>
           </Link>
+
+          <div className="pb-8 text-center">
+            <Link href="/law" className="inline-block p-4 text-[10px] text-zinc-600 hover:text-zinc-400 transition-colors">
+              特定商取引法に基づく表記
+            </Link>
+          </div>
         </motion.section>
 
       </div>
