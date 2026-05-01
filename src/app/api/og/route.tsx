@@ -83,7 +83,7 @@ export async function GET(request: NextRequest) {
               <span style={{ fontSize: 20, color: '#52525b', letterSpacing: '0.3em', fontWeight: 600 }}>BIOLOGICAL ANALYSIS</span>
               <div style={{ display: 'flex', alignItems: 'baseline', marginTop: '20px' }}>
                 <span style={{ fontSize: 80, color: '#d4af37', fontWeight: 900, fontFamily: 'serif' }}>{payload.dev}</span>
-                <span style={{ fontSize: 24, color: '#52525b', marginLeft: '10px', tracking: 'widest' }}>偏差値</span>
+                <span style={{ fontSize: 24, color: '#52525b', marginLeft: '10px', letterSpacing: '0.1em' }}>偏差値</span>
               </div>
               <span style={{ fontSize: 24, color: '#a1a1aa', marginTop: '5px' }}>上位 {payload.top}％ の特異個体</span>
             </div>
