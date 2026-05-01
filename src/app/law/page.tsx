@@ -72,6 +72,20 @@ export default function LawPage() {
             </tbody>
           </table>
         </section>
+
+        <section className="space-y-4 pt-6 border-t border-slate-200">
+          <h2 className="text-sm font-bold tracking-widest text-slate-900 border-l-4 border-slate-900 pl-3 py-1">
+            プライバシーポリシー（個人情報の取り扱い）
+          </h2>
+          <div className="text-xs text-slate-600 leading-relaxed space-y-3">
+            <p>
+              当サイト（承認欲求傾向分析）は、診断のためにユーザーが入力した回答データをサーバー上に永続的に保存・蓄積することはありません。診断結果はお客様のブラウザ上および一時的なセッションとしてのみ処理されます。
+            </p>
+            <p>
+              また、有料レポートのご購入に際して入力される氏名、クレジットカード番号、メールアドレスなどの個人情報・決済情報は、すべて安全な外部決済サービス（Stripe）によって暗号化されて直接管理・処理されます。当サイトの運営者がお客様のクレジットカード情報を取得・保持することは一切ありません。
+            </p>
+          </div>
+        </section>
       </div>
     </div>
   );

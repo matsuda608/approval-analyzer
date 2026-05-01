@@ -41,10 +41,14 @@ export default function Home() {
               分析を開始する
             </Button>
           </Link>
-          <p className="mt-3 text-xs text-slate-400 mb-8">
+          <p className="mt-3 text-xs text-slate-400 mb-6">
             所要時間：約3分 / 全40問
           </p>
-          <div className="pt-4 pb-8 text-center">
+          <div className="text-[10px] text-slate-400/80 leading-relaxed text-left bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <span className="font-bold">※免責事項：</span><br />
+            本サービスは統計・心理傾向に基づくエンターテイメントであり、医学的・心理学的な診断結果や効果を保証するものではありません。
+          </div>
+          <div className="pt-6 pb-8 text-center">
             <Link href="/law" className="inline-block p-4 text-xs text-slate-400 hover:text-slate-600 transition-colors">
               特定商取引法に基づく表記
             </Link>
